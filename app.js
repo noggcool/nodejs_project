@@ -6,7 +6,7 @@ const logger = require('morgan');
 //引入express-session中间件
 const session = require("express-session");
 
-//路由中间件
+//路由中间件，接口的东西的配置
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const captchaRouter = require('./routes/captcha.js');
@@ -35,7 +35,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 //使用路由中间件
 app.use('/', indexRouter);//  
-app.use('/users', usersRouter);  // /user/regis /users/ater /user/login
+app.use('/users', usersRouter);  // /user/regis /user/login，访问users目录下的资源，用usersRouter.访问/users用到'./routes/users'里的资源
 app.use('/captcha',captchaRouter);//访问captchaRouter目录下的资源
 //访问/captcha下的资源，到这个captchaRouter路由里去
 //var captchaRouter = require('./routes/captcha.js');

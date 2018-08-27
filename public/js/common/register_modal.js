@@ -17,7 +17,7 @@ RegisterModal.template=`
         <form id="form-register">
           <div class="form-group">
             <label for="registerUsername">用户名</label>
-            <input type="text" class="form-control" id="registerUsername" placeholder="用户名"name="username>
+            <input type="text" class="form-control" id="registerUsername" placeholder="用户名"name="username">
           </div>
           <div class="form-group">
             <label for="registerPassword">密码</label>
@@ -25,7 +25,7 @@ RegisterModal.template=`
           </div>
           <div class="form-group">
             <label for="registerConfPassword">确认密码</label>
-            <input type="password" class="form-control" id="registerConfPassword" placeholder="密码"name="passname_again">
+            <input type="password" class="form-control" id="registerConfPassword" placeholder="密码"name="password_again">
           </div>
           <div class="form-group">
             <label for="registerEmail">邮箱</label>
@@ -73,8 +73,10 @@ $.extend(RegisterModal.prototype,{
         })
     },
     handle(){
-      data = $("#form-register").serialize();
-      $.post("/users/register",data,function(resDate){//??????users在哪？？？
+      console.log($("#registerUsername").val());
+     var data = $("#form-register").serialize();
+     console.log(data)
+      $.post("/users/register",data,(resDate)=>{//??????users在哪？？？
        console.log(resDate)
       },"json")
       // .done(()=>{//这一部分要根据服务器返回的数据判断，成功了才能hide
